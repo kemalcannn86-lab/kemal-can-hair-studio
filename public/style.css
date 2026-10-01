@@ -1,0 +1,585 @@
+/* =========================================
+   KEMAL CAN HAIR STUDIO
+   PREMIUM BLACK & GOLD DESIGN
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080808;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 7%;
+
+    background: rgba(5, 5, 5, 0.94);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    color: #d4af37;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    display: block;
+    color: #ffffff;
+    font-size: 10px;
+    letter-spacing: 5px;
+    margin-top: -3px;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #d4af37;
+}
+
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 130px 20px 80px;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.12),
+            transparent 38%
+        ),
+        linear-gradient(
+            rgba(0, 0, 0, 0.88),
+            rgba(0, 0, 0, 0.98)
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 25px;
+
+    border: 1px solid rgba(212, 175, 55, 0.15);
+
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+}
+
+.small-title,
+.section-small {
+    color: #d4af37;
+    font-size: 12px;
+    letter-spacing: 5px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 9vw, 92px);
+    line-height: 0.95;
+    letter-spacing: 5px;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    display: block;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px #d4af37;
+
+    margin-top: 12px;
+}
+
+.description {
+    max-width: 600px;
+
+    margin: 30px auto;
+
+    color: #bdbdbd;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   GOLD BUTTON
+   ========================================= */
+
+.gold-button {
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    background: #d4af37;
+
+    color: #080808;
+
+    text-decoration: none;
+
+    border: none;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.gold-button:hover {
+    background: #f0d36a;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 30px rgba(212, 175, 55, 0.25);
+}
+
+
+/* =========================================
+   SECTIONS
+   ========================================= */
+
+.section {
+    padding: 110px 7%;
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.section h2,
+.campaign h2 {
+    font-size: clamp(32px, 5vw, 52px);
+
+    margin-bottom: 50px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   SERVICES
+   ========================================= */
+
+.services {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.service-card {
+    position: relative;
+
+    padding: 40px 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111111,
+            #080808
+        );
+
+    border: 1px solid #242424;
+
+    transition: 0.35s;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 15px 40px rgba(212, 175, 55, 0.08);
+}
+
+.service-card.featured {
+    border-color: rgba(212, 175, 55, 0.6);
+}
+
+.icon {
+    font-size: 32px;
+
+    color: #d4af37;
+
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 19px;
+
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #999;
+
+    font-size: 14px;
+
+    min-height: 50px;
+
+    margin-bottom: 25px;
+}
+
+.service-card strong {
+    display: block;
+
+    color: #d4af37;
+
+    font-size: 23px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   CAMPAIGN
+   ========================================= */
+
+.campaign {
+    padding: 110px 7%;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.09),
+            transparent 45%
+        );
+
+    border-top: 1px solid #181818;
+    border-bottom: 1px solid #181818;
+}
+
+.campaign > p:not(.section-small) {
+    color: #aaa;
+
+    max-width: 600px;
+
+    margin: -25px auto 40px;
+}
+
+.campaign-box {
+    max-width: 500px;
+
+    margin: auto;
+
+    padding: 35px;
+
+    border: 1px solid rgba(212, 175, 55, 0.5);
+
+    background: #0b0b0b;
+}
+
+.campaign-box span {
+    color: #d4af37;
+
+    font-size: 28px;
+}
+
+.campaign-box h3 {
+    margin: 10px 0;
+
+    font-size: 23px;
+}
+
+.campaign-box p {
+    color: #aaa;
+}
+
+.campaign-box b {
+    color: #d4af37;
+}
+
+
+/* =========================================
+   APPOINTMENT
+   ========================================= */
+
+.appointment {
+    max-width: 850px;
+}
+
+.appointment-text {
+    color: #999;
+
+    margin-top: -35px;
+
+    margin-bottom: 45px;
+}
+
+#appointmentForm {
+    text-align: left;
+
+    background: #0d0d0d;
+
+    padding: 40px;
+
+    border: 1px solid #222;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #d4af37;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 15px;
+
+    background: #080808;
+
+    border: 1px solid #292929;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s;
+
+    border-radius: 0;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 0 1px rgba(212, 175, 55, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 120px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #555;
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+#appointmentForm .gold-button {
+    width: 100%;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    text-align: center;
+
+    padding: 55px 20px;
+
+    background: #050505;
+
+    border-top: 1px solid #1b1b1b;
+}
+
+footer .logo {
+    display: inline-block;
+
+    margin-bottom: 20px;
+}
+
+footer p {
+    color: #666;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    header {
+        padding: 15px 5%;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 150px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        letter-spacing: 3px;
+    }
+
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        padding: 35px 25px;
+    }
+
+    .section,
+    .campaign {
+        padding: 80px 5%;
+    }
+
+    #appointmentForm {
+        padding: 25px 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media (max-width: 420px) {
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .logo span {
+        font-size: 8px;
+        letter-spacing: 4px;
+    }
+
+    .hero {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .small-title,
+    .section-small {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .gold-button {
+        width: 100%;
+
+        padding: 15px 20px;
+    }
+
+    .section h2,
+    .campaign h2 {
+        font-size: 32px;
+    }
+}

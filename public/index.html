@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KEMAL CAN HAIR STUDIO</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="logo">
+            KEMAL CAN
+            <span>HAIR STUDIO</span>
+        </div>
+
+        <nav>
+            <a href="#anasayfa">Ana Sayfa</a>
+            <a href="#hizmetler">Hizmetler</a>
+            <a href="#kampanyalar">Kampanyalar</a>
+            <a href="#randevu">Randevu</a>
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+    <section id="anasayfa" class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">PREMIUM MEN'S GROOMING</p>
+
+            <h1>
+                KEMAL CAN
+                <span>HAIR STUDIO</span>
+            </h1>
+
+            <p class="description">
+                Tarzını keşfet. Profesyonel dokunuşla
+                kendine yeni bir görünüm kazandır.
+            </p>
+
+            <a href="#randevu" class="gold-button">
+                RANDEVU OLUŞTUR
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- HİZMETLER -->
+    <section id="hizmetler" class="section">
+
+        <p class="section-small">HİZMETLERİMİZ</p>
+
+        <h2>Fiyat Listesi</h2>
+
+        <div class="services">
+
+            <div class="service-card">
+                <div class="icon">✂</div>
+                <h3>Saç Tıraşı</h3>
+                <p>Profesyonel saç kesimi ve şekillendirme.</p>
+                <strong>300 TL</strong>
+            </div>
+
+            <div class="service-card featured">
+                <div class="icon">✂</div>
+                <h3>Saç Tıraşı + Yıkama</h3>
+                <p>Saç kesimi, yıkama ve profesyonel şekillendirme.</p>
+                <strong>500 TL</strong>
+            </div>
+
+            <div class="service-card">
+                <div class="icon">✦</div>
+                <h3>Saç Maskesi</h3>
+                <p>Saç bakımına özel maske uygulaması.</p>
+                <strong>BİZDEN</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- KAMPANYALAR -->
+    <section id="kampanyalar" class="campaign">
+
+        <p class="section-small">ÖZEL FIRSAT</p>
+
+        <h2>Güzel Kampanyalar</h2>
+
+        <p>
+            Kendine zaman ayırmanın tam zamanı.
+            Özel kampanyalarımızı kaçırma.
+        </p>
+
+        <div class="campaign-box">
+            <span>✦</span>
+            <h3>Saç Bakım Maskesi</h3>
+            <p>
+                Saç tıraşına özel bakım maskesi
+                <b>bizden.</b>
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- RANDEVU -->
+    <section id="randevu" class="section appointment">
+
+        <p class="section-small">ONLINE RANDEVU</p>
+
+        <h2>Randevunu Oluştur</h2>
+
+        <p class="appointment-text">
+            Sana uygun gün ve saati seç,
+            randevunu kolayca oluştur.
+        </p>
+
+        <form id="appointmentForm">
+
+            <div class="form-group">
+                <label>Ad Soyad</label>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Adınız Soyadınız"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Telefon</label>
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="05XX XXX XX XX"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>E-posta</label>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="ornek@email.com"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Hizmet</label>
+
+                <select name="service" required>
+                    <option value="">Hizmet seçiniz</option>
+                    <option value="Saç Tıraşı - 300 TL">
+                        Saç Tıraşı - 300 TL
+                    </option>
+                    <option value="Saç Tıraşı + Yıkama - 500 TL">
+                        Saç Tıraşı + Yıkama - 500 TL
+                    </option>
+                    <option value="Saç Maskesi - Bizden">
+                        Saç Maskesi - Bizden
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label>Tarih</label>
+                    <input
+                        type="date"
+                        name="date"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Saat</label>
+                    <input
+                        type="time"
+min="09:00"
+max="21:30"
+step="1800"
+                        name="time"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label>Açıklama</label>
+
+                <textarea
+                    name="note"
+                    rows="5"
+                    placeholder="Örneğin: Sadece saç tıraşı olmak istiyorum."
+                ></textarea>
+            </div>
+
+            <button type="submit" class="gold-button">
+                RANDEVU OLUŞTUR
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="logo">
+            KEMAL CAN
+            <span>HAIR STUDIO</span>
+        </div>
+
+        <p>
+            © 2026 KEMAL CAN HAIR STUDIO
+        </p>
+
+        <p>
+            Profesyonel Erkek Kuaförü
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Paneli | KEMAL CAN HAIR STUDIO</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #090909;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #111;
+            border-bottom: 1px solid #c9a227;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #d4af37;
+            font-size: 22px;
+        }
+
+        .logout {
+            background: transparent;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 9px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .logout:hover {
+            background: #d4af37;
+            color: #000;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .top h2 {
+            color: #d4af37;
+        }
+
+        .refresh {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .refresh:hover {
+            background: #f0cf55;
+        }
+
+        .count {
+            background: #151515;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .count span {
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .appointments {
+            display: grid;
+            gap: 18px;
+        }
+
+        .appointment {
+            background: #111;
+            border: 1px solid #333;
+            border-left: 4px solid #d4af37;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.3);
+        }
+
+        .appointment h3 {
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .row {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .label {
+            color: #999;
+        }
+
+        .value {
+            color: #fff;
+        }
+
+        .note {
+            margin-top: 15px;
+            padding: 12px;
+            background: #191919;
+            border-radius: 7px;
+            border: 1px solid #292929;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 50px 20px;
+            background: #111;
+            border-radius: 10px;
+            color: #999;
+        }
+
+        .error {
+            background: #2a1111;
+            border: 1px solid #8b3030;
+            color: #ffb0b0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 17px;
+            }
+
+            .container {
+                width: 92%;
+                margin: 20px auto;
+            }
+
+            .appointment {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>✂️ KEMAL CAN HAIR STUDIO</h1>
+    <button class="logout" onclick="logout()">Çıkış</button>
+</header>
+
+<div class="container">
+
+    <div class="top">
+        <h2>📋 Randevular</h2>
+
+        <button class="refresh" onclick="loadAppointments()">
+            🔄 Yenile
+        </button>
+    </div>
+
+    <div class="count">
+        Toplam Randevu:
+        <span id="appointmentCount">0</span>
+    </div>
+
+    <div id="message"></div>
+
+    <div id="appointments" class="appointments"></div>
+
+</div>
+
+<script>
+
+let adminPassword = sessionStorage.getItem("adminPassword");
+
+if (!adminPassword) {
+    adminPassword = prompt("🔐 Admin şifresini gir:");
+
+    if (!adminPassword) {
+        document.body.innerHTML =
+            "<h2 style='text-align:center;margin-top:100px;color:#d4af37'>Giriş iptal edildi.</h2>";
+    } else {
+        sessionStorage.setItem("adminPassword", adminPassword);
+        loadAppointments();
+    }
+} else {
+    loadAppointments();
+}
+
+async function loadAppointments() {
+
+    const container = document.getElementById("appointments");
+    const message = document.getElementById("message");
+
+    container.innerHTML = "⏳ Randevular yükleniyor...";
+    message.innerHTML = "";
+
+    try {
+
+        const response = await fetch("/api/admin/appointments", {
+            headers: {
+                "Authorization": "Basic " + btoa("admin:" + adminPassword)
+            }
+        });
+
+        if (response.status === 401) {
+
+            sessionStorage.removeItem("adminPassword");
+
+            message.innerHTML =
+                '<div class="error">❌ Şifre yanlış. Sayfayı yenileyip tekrar deneyin.</div>';
+
+            return;
+        }
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error("Randevular alınamadı.");
+        }
+
+        const appointments = data.appointments || [];
+
+        document.getElementById("appointmentCount").textContent =
+            appointments.length;
+
+        if (appointments.length === 0) {
+
+            container.innerHTML =
+                '<div class="empty">📭 Henüz randevu bulunmuyor.</div>';
+
+            return;
+        }
+
+        container.innerHTML = "";
+
+        appointments
+            .slice()
+            .reverse()
+            .forEach(appointment => {
+
+                const card = document.createElement("div");
+                card.className = "appointment";
+
+                card.innerHTML = `
+                    <h3>✂️ ${escapeHtml(appointment.service || "Hizmet")}</h3>
+
+                    <div class="row">
+                        <span class="label">👤 Müşteri:</span>
+                        <span class="value">${escapeHtml(appointment.name)}</span>
+                    </div>
+
+                    <div class="row">
+                        <span class="label">📞 Telefon:</span>
+                        <span class="value">${escapeHtml(appointment.phone)}</span>
+                    </div>
+
+                    <div class="row">
+                        <span class="label">📧 E-posta:</span>
+                        <span class="value">${escapeHtml(appointment.email)}</span>
+                    </div>
+
+                    <div class="row">
+                        <span class="label">📅 Tarih:</span>
+                        <span class="value">${escapeHtml(appointment.date)}</span>
+                    </div>
+
+                    <div class="row">
+                        <span class="label">🕐 Saat:</span>
+                        <span class="value">${escapeHtml(appointment.time)}</span>
+                    </div>
+
+                    <div class="note">
+                        <strong>📝 Açıklama:</strong><br>
+                        ${escapeHtml(appointment.note || "Açıklama belirtilmedi.")}
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.innerHTML =
+            '<div class="error">❌ Randevular yüklenirken bir hata oluştu.</div>';
+
+        container.innerHTML = "";
+    }
+}
+
+function escapeHtml(value) {
+
+    const div = document.createElement("div");
+    div.textContent = value ?? "";
+
+    return div.innerHTML;
+}
+
+function logout() {
+
+    sessionStorage.removeItem("adminPassword");
+
+    location.reload();
+}
+
+</script>
+
+</body>
+</html>
+
