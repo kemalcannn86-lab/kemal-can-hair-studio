@@ -480,16 +480,4 @@ app.delete(
 // SUNUCUYU BAŞLAT
 // ========================================
 
-app.listen(PORT, () => {
-
-    console.log("");
-    console.log("✂️ KEMAL CAN HAIR STUDIO çalışıyor!");
-    console.log(`🌐 http://localhost:${PORT}`);
-    console.log("📱 Telegram bildirim sistemi aktif!");
-    console.log("🔐 Admin paneli aktif!");
-    console.log("🚫 Çift randevu kontrolü aktif!");
-    console.log("🗑️ Randevu silme sistemi aktif!");
-    console.log("🕘 Randevu saatleri: 09:00 - 21:30");
-    console.log("⏱️ Saat aralığı: 30 dakika");
-    console.log("");
-});
+module.exports = app;
